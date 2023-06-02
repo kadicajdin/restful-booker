@@ -1,0 +1,167 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang2057{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil\fcharset2 Symbol;}}
+{\colortbl ;\red0\green0\blue255;}
+{\*\generator Riched20 10.0.22621}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9\par
+I use Java, TestNG, Maven, and Rest Assured to automate this smoke TC\b .\par
+\b0 Here is a path that can be Run with TestNG.\par
+BookingAPI\\src\\test\\java\\com\\restfulBooker\\RestfulBookerSmoke.java\par
+\b\par
+\par
+\par
+Test Plan: Restful Booker API Service\b0\par
+BASE URL: {{\field{\*\fldinst{HYPERLINK https://restful-booker.herokuapp.com }}{\fldrslt{https://restful-booker.herokuapp.com\ul0\cf0}}}}\f0\fs22\par
+\par
+1. User Registration (SMOKE)\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl240\slmult1 Verify the successful registration of a new user by sending a POST request to the /auth endpoint.\par
+{\pntext\f1\'B7\tab}Validate that the response contains a token and has a status code of 200 OK.\par
+{\pntext\f1\'B7\tab}Ensure the received token can be used for subsequent API calls.\par
+
+\pard\sa200\sl276\slmult1\par
+2. Create a Booking (SMOKE)\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl240\slmult1 Authenticate a user by obtaining a token using the /auth endpoint.\par
+{\pntext\f1\'B7\tab}Send a POST request to the /booking endpoint, providing valid booking details.\par
+{\pntext\f1\'B7\tab}Confirm that the response contains the newly created booking ID and has a status code of 200 OK.\par
+{\pntext\f1\'B7\tab}Retrieve the booking details using the booking ID and verify that they match the provided information.\par
+
+\pard\sa200\sl240\slmult1\par
+
+\pard\sa200\sl276\slmult1 3. Retrieve Booking by ID\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl240\slmult1 Authenticate a user by obtaining a token using the /auth endpoint.\par
+{\pntext\f1\'B7\tab}Create a new booking using the /booking endpoint.\par
+{\pntext\f1\'B7\tab}Send a GET request to the /booking/\{bookingID\} endpoint, substituting \{bookingID\} with the ID of the created booking.\par
+{\pntext\f1\'B7\tab}Verify that the response contains the correct booking details and has a status code of 200 OK.\par
+
+\pard\sa200\sl240\slmult1\par
+
+\pard\sa200\sl276\slmult1 4. Update Booking\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl240\slmult1 Authenticate a user by obtaining a token using the /auth endpoint.\par
+{\pntext\f1\'B7\tab}Create a new booking using the /booking endpoint.\par
+{\pntext\f1\'B7\tab}Send a PUT request to the /booking/\{bookingID\} endpoint, substituting \{bookingID\} with the ID of the created booking, and provide updated booking details.\par
+{\pntext\f1\'B7\tab}Verify that the response contains the updated booking details and has a status code of 200 OK.\par
+{\pntext\f1\'B7\tab}Retrieve the booking details using the booking ID and ensure that the information has been successfully updated.\par
+
+\pard\sa200\sl240\slmult1\par
+
+\pard\sa200\sl276\slmult1 5. Delete Booking\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl240\slmult1 Authenticate a user by obtaining a token using the /auth endpoint.\par
+{\pntext\f1\'B7\tab}Create a new booking using the /booking endpoint.\par
+{\pntext\f1\'B7\tab}Send a DELETE request to the /booking/\{bookingID\} endpoint, substituting \{bookingID\} with the ID of the created booking.\par
+{\pntext\f1\'B7\tab}Verify that the response has a status code of 201 Created.\par
+{\pntext\f1\'B7\tab}Attempt to retrieve the deleted booking using the booking ID and confirm that it returns a status code of 404 Not Found.\par
+
+\pard\sa200\sl240\slmult1\par
+
+\pard\sa200\sl276\slmult1 6. Retrieve Bookings by Dates\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl240\slmult1 Authenticate a user by obtaining a token using the /auth endpoint.\par
+{\pntext\f1\'B7\tab}Send a GET request to the /booking endpoint with the query parameters checkin and checkout, specifying a date range.\par
+{\pntext\f1\'B7\tab}Validate that the response contains a list of bookings within the specified date range and has a status code of 200 OK.\par
+
+\pard\sa200\sl240\slmult1\par
+
+\pard\sa200\sl276\slmult1 7. Retrieve Bookings by Name\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl240\slmult1 Authenticate a user by obtaining a token using the /auth endpoint.\par
+{\pntext\f1\'B7\tab}Send a GET request to the /booking endpoint with the query parameter firstname or lastname, specifying a name.\par
+{\pntext\f1\'B7\tab}Validate that the response contains a list of bookings matching the provided name and has a status code of 200 OK.\par
+
+\pard\sa200\sl240\slmult1\par
+
+\pard\sa200\sl276\slmult1 8. Health Check\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl240\slmult1 Send a GET request to the /ping endpoint to check the health status of the API service.\par
+{\pntext\f1\'B7\tab}Verify that the response has a status code of 201 Created and includes a message indicating the service is healthy.\par
+
+\pard\sa200\sl240\slmult1\b\par
+Positive Test Cases:\par
+\b0 1. User Registration:\par
+   - Providing valid credentials during registration.\par
+   - Verifying that a token is generated after a successful registration.\par
+\par
+2. Create a Booking:\par
+   - Providing valid and complete booking details.\par
+   - Verifying that a booking ID is returned after successful creation.\par
+   - Retrieving the booking details and ensuring they match the provided information.\par
+\par
+3. Get Booking by ID:\par
+   - Providing a valid booking ID.\par
+   - Verifying that the response contains the correct booking details.\par
+\par
+4. Update Booking:\par
+   - Providing a valid booking ID.\par
+   - Updating the booking details with valid information.\par
+   - Verifying that the response contains the updated booking details.\par
+\par
+5. Delete Booking:\par
+   - Providing a valid booking ID.\par
+   - Verifying that the booking is successfully deleted.\par
+   - Confirming that the booking is no longer accessible through a GET request.\par
+\par
+6. Get Booking by Dates:\par
+   - Providing valid check-in and check-out dates.\par
+   - Verifying that the response contains a list of bookings within the specified date range.\par
+\par
+7. Get Booking by Name:\par
+   - Providing a valid first name or last name.\par
+   - Verifying that the response contains a list of bookings matching the provided name.\par
+\par
+8. Health Check:\par
+   - Sending a GET request to the `/ping` endpoint.\par
+   - Verifying that the response indicates a healthy status.\par
+\par
+\par
+\b Negative Test Cases:\par
+\b0 1. User Registration:\par
+   - Providing incomplete or invalid credentials during registration.\par
+   - Verifying that an appropriate error message is returned.\par
+\par
+2. Create a Booking:\par
+   - Providing incomplete or invalid booking details.\par
+   - Verifying that the response contains an error message.\par
+\par
+3. Get Booking by ID:\par
+   - Providing an invalid or non-existent booking ID.\par
+   - Verifying that an appropriate error message is returned.\par
+\par
+4. Update Booking:\par
+   - Providing an invalid or non-existent booking ID.\par
+   - Updating the booking with invalid information.\par
+   - Verifying that the response contains an error message.\par
+\par
+5. Delete Booking:\par
+   - Providing an invalid or non-existent booking ID.\par
+   - Verifying that an appropriate error message is returned.\par
+\par
+6. Get Booking by Dates:\par
+   - Providing invalid or incorrect date formats for check-in and check-out dates.\par
+   - Verifying that an appropriate error message is returned.\par
+\par
+7. Get Booking by Name:\par
+   - Providing an invalid or non-existent name.\par
+   - Verifying that the response contains an empty list or an appropriate error message.\par
+\par
+\par
+\par
+\b Bug:\par
+\b0 Defects found while test creating of booking.\par
+\par
+1. Booking can be created without a first name and last name:\par
+\tab Creates a new booking in the API, without first name and last name.\par
+\tab Booking is created without these two fields.\par
+\par
+2. Booking can be created in the past:\par
+\tab Creates a new booking in the API, but in the field "checkin" put the date in past\par
+\tab Booking is created and the date is in the past.\par
+\par
+3. Booking can be created when "checkout" date is an older date than "checkin" date.\par
+\tab Creates a new booking in the API, but in the field\par
+\tab\tab  "checkin" put the date: 2023-06-01\par
+\tab\tab "checkout" put the date 2022-06-01\par
+\tab Booking is created and the checkout date is older than the checkin date.\b\par
+}
+ 

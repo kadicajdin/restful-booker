@@ -1,0 +1,140 @@
+
+I use Java, TestNG, Maven, and Rest Assured to automate this smoke TC.
+Here is a path that can be Run with TestNG.
+BookingAPI\src\test\java\com\restfulBooker\RestfulBookerSmoke.java
+
+
+
+Test Plan: Restful Booker API Service
+BASE URL: https://restful-booker.herokuapp.com
+
+1. User Registration (SMOKE)
+Verify the successful registration of a new user by sending a POST request to the /auth endpoint.
+Validate that the response contains a token and has a status code of 200 OK.
+Ensure the received token can be used for subsequent API calls.
+
+2. Create a Booking (SMOKE)
+Authenticate a user by obtaining a token using the /auth endpoint.
+Send a POST request to the /booking endpoint, providing valid booking details.
+Confirm that the response contains the newly created booking ID and has a status code of 200 OK.
+Retrieve the booking details using the booking ID and verify that they match the provided information.
+
+3. Retrieve Booking by ID
+Authenticate a user by obtaining a token using the /auth endpoint.
+Create a new booking using the /booking endpoint.
+Send a GET request to the /booking/{bookingID} endpoint, substituting {bookingID} with the ID of the created booking.
+Verify that the response contains the correct booking details and has a status code of 200 OK.
+
+4. Update Booking
+Authenticate a user by obtaining a token using the /auth endpoint.
+Create a new booking using the /booking endpoint.
+Send a PUT request to the /booking/{bookingID} endpoint, substituting {bookingID} with the ID of the created booking, and provide updated booking details.
+Verify that the response contains the updated booking details and has a status code of 200 OK.
+Retrieve the booking details using the booking ID and ensure that the information has been successfully updated.
+
+5. Delete Booking
+Authenticate a user by obtaining a token using the /auth endpoint.
+Create a new booking using the /booking endpoint.
+Send a DELETE request to the /booking/{bookingID} endpoint, substituting {bookingID} with the ID of the created booking.
+Verify that the response has a status code of 201 Created.
+Attempt to retrieve the deleted booking using the booking ID and confirm that it returns a status code of 404 Not Found.
+
+6. Retrieve Bookings by Dates
+Authenticate a user by obtaining a token using the /auth endpoint.
+Send a GET request to the /booking endpoint with the query parameters checkin and checkout, specifying a date range.
+Validate that the response contains a list of bookings within the specified date range and has a status code of 200 OK.
+
+7. Retrieve Bookings by Name
+Authenticate a user by obtaining a token using the /auth endpoint.
+Send a GET request to the /booking endpoint with the query parameter firstname or lastname, specifying a name.
+Validate that the response contains a list of bookings matching the provided name and has a status code of 200 OK.
+
+8. Health Check
+Send a GET request to the /ping endpoint to check the health status of the API service.
+Verify that the response has a status code of 201 Created and includes a message indicating the service is healthy.
+
+Positive Test Cases:
+1. User Registration:
+   - Providing valid credentials during registration.
+   - Verifying that a token is generated after a successful registration.
+
+2. Create a Booking:
+   - Providing valid and complete booking details.
+   - Verifying that a booking ID is returned after successful creation.
+   - Retrieving the booking details and ensuring they match the provided information.
+
+3. Get Booking by ID:
+   - Providing a valid booking ID.
+   - Verifying that the response contains the correct booking details.
+
+4. Update Booking:
+   - Providing a valid booking ID.
+   - Updating the booking details with valid information.
+   - Verifying that the response contains the updated booking details.
+
+5. Delete Booking:
+   - Providing a valid booking ID.
+   - Verifying that the booking is successfully deleted.
+   - Confirming that the booking is no longer accessible through a GET request.
+
+6. Get Booking by Dates:
+   - Providing valid check-in and check-out dates.
+   - Verifying that the response contains a list of bookings within the specified date range.
+
+7. Get Booking by Name:
+   - Providing a valid first name or last name.
+   - Verifying that the response contains a list of bookings matching the provided name.
+
+8. Health Check:
+   - Sending a GET request to the `/ping` endpoint.
+   - Verifying that the response indicates a healthy status.
+
+
+Negative Test Cases:
+1. User Registration:
+   - Providing incomplete or invalid credentials during registration.
+   - Verifying that an appropriate error message is returned.
+
+2. Create a Booking:
+   - Providing incomplete or invalid booking details.
+   - Verifying that the response contains an error message.
+
+3. Get Booking by ID:
+   - Providing an invalid or non-existent booking ID.
+   - Verifying that an appropriate error message is returned.
+
+4. Update Booking:
+   - Providing an invalid or non-existent booking ID.
+   - Updating the booking with invalid information.
+   - Verifying that the response contains an error message.
+
+5. Delete Booking:
+   - Providing an invalid or non-existent booking ID.
+   - Verifying that an appropriate error message is returned.
+
+6. Get Booking by Dates:
+   - Providing invalid or incorrect date formats for check-in and check-out dates.
+   - Verifying that an appropriate error message is returned.
+
+7. Get Booking by Name:
+   - Providing an invalid or non-existent name.
+   - Verifying that the response contains an empty list or an appropriate error message.
+
+
+
+Bug:
+Defects found while test creating of booking.
+
+1. Booking can be created without a first name and last name:
+	Creates a new booking in the API, without first name and last name.
+	Booking is created without these two fields.
+
+2. Booking can be created in the past:
+	Creates a new booking in the API, but in the field "checkin" put the date in past
+	Booking is created and the date is in the past.
+
+3. Booking can be created when "checkout" date is older date than "checkin" date.
+	Creates a new booking in the API, but in the field
+		 "checkin" put the date: 2023-06-01
+		"checkout" put the date 2022-06-01
+	Booking is created and the checkout date is older than the checkin date.
